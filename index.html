@@ -53,7 +53,7 @@
     <div id="poems" class="poems"></div>
 
     <form class="formbox" id="poemForm">
-      <div id="poetContainer">
+      <div id="poetFieldContainer">
         <label for="poet">Aapka Naam (Poet)</label>
         <input type="text" id="poet" required placeholder="Aapka naam ya pen name..." />
       </div>
@@ -69,23 +69,19 @@
 
   <script>
     const BIN_ID = "6ad660b2ffd5d1605379ad5a";
-    const API_KEY = "$2a$10$pqTJrKg0aRYW6PbU33yBGOQN28o/lDMLHOld6C5qJzc92xSJqlR3"; 
+    const API_KEY = "$2a$10$pqTJrkG0arYW6PBu33yBG0F5d05R2q.5H024X2zF3vj9Y1Lg7j89K"; 
     const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-    // Check if user has a saved pen name in their browser
     function checkSavedProfile() {
       const savedName = localStorage.getItem('kks_poet_name');
-      const poetInput = document.getElementById('poet');
-      const container = document.getElementById('poetContainer');
+      const container = document.getElementById('poetFieldContainer');
 
       if (savedName) {
-        poetInput.value = savedName;
         container.innerHTML = `
           <div class="profile-banner">
             Posting as: <span id="displayName">${savedName}</span>
             <button type="button" class="change-name" onclick="changeName()">Change Name</button>
           </div>
-          <input type="hidden" id="poet" value="${savedName}" />
         `;
       }
     }
@@ -121,15 +117,20 @@
       event.preventDefault();
       
       const verse = document.getElementById('verse').value.trim();
-      const poetInput = document.getElementById('poet');
-      const poet = poetInput.value.trim();
+      
+      // Get poet name either from saved local storage or the input box
+      let poet = localStorage.getItem('kks_poet_name');
+      if (!poet) {
+        const poetInput = document.getElementById('poet');
+        poet = poetInput ? poetInput.value.trim() : '';
+      }
 
       if (!verse || !poet) {
         alert('Please fill in both fields!');
         return;
       }
 
-      // Save name to browser storage so they don't have to type it next time
+      // Save name for future visits
       localStorage.setItem('kks_poet_name', poet);
 
       try {
