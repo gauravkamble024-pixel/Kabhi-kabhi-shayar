@@ -31,9 +31,6 @@
     .formbox textarea{height:100px}
     .formbox button{background:var(--ink);color:var(--paper);border:none;padding:12px 24px;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:2px;width:100%}
     .foot{text-align:center;font-size:11px;color:var(--muted);margin-top:40px;border-top:1px solid var(--border);padding-top:20px;letter-spacing:1px}
-    .profile-banner{font-size:12px;color:var(--muted);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-    .profile-banner span{color:var(--ink);font-weight:600}
-    .change-name{background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:11px;padding:0}
   </style>
 </head>
 <body>
@@ -53,13 +50,11 @@
     <div id="poems" class="poems"></div>
 
     <form class="formbox" id="poemForm">
-      <div id="poetFieldContainer">
-        <label for="poet">Aapka Naam (Poet)</label>
-        <input type="text" id="poet" required placeholder="Aapka naam ya pen name..." />
-      </div>
-      
       <label for="verse">Shayari</label>
       <textarea id="verse" required placeholder="Apne dil ki baat yahan likhiye..."></textarea>
+      
+      <label for="poet">Aapka Naam (Poet)</label>
+      <input type="text" id="poet" required placeholder="Aapka naam ya pen name..." />
       
       <button type="submit">Post Shayari</button>
     </form>
@@ -72,24 +67,13 @@
     const API_KEY = "$2a$10$pqTJrkG0arYW6PBu33yBG0F5d05R2q.5H024X2zF3vj9Y1Lg7j89K"; 
     const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-    function checkSavedProfile() {
+    // Auto-fill name if saved in browser storage
+    window.addEventListener('DOMContentLoaded', () => {
       const savedName = localStorage.getItem('kks_poet_name');
-      const container = document.getElementById('poetFieldContainer');
-
       if (savedName) {
-        container.innerHTML = `
-          <div class="profile-banner">
-            Posting as: <span id="displayName">${savedName}</span>
-            <button type="button" class="change-name" onclick="changeName()">Change Name</button>
-          </div>
-        `;
+        document.getElementById('poet').value = savedName;
       }
-    }
-
-    function changeName() {
-      localStorage.removeItem('kks_poet_name');
-      location.reload();
-    }
+    });
 
     async function loadShayaris() {
       try {
@@ -113,24 +97,18 @@
       }
     }
 
-    async function postShayari(event) {
-      event.preventDefault();
+    document.getElementById('poemForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
       
       const verse = document.getElementById('verse').value.trim();
-      
-      // Get poet name either from saved local storage or the input box
-      let poet = localStorage.getItem('kks_poet_name');
-      if (!poet) {
-        const poetInput = document.getElementById('poet');
-        poet = poetInput ? poetInput.value.trim() : '';
-      }
+      const poet = document.getElementById('poet').value.trim();
 
       if (!verse || !poet) {
         alert('Please fill in both fields!');
         return;
       }
 
-      // Save name for future visits
+      // Save name for next time
       localStorage.setItem('kks_poet_name', poet);
 
       try {
@@ -161,11 +139,8 @@
       } catch (error) {
         console.error("Error saving shayari:", error);
       }
-    }
+    });
 
-    document.getElementById('poemForm').addEventListener('submit', postShayari);
-    
-    checkSavedProfile();
     loadShayaris();
   </script>
 </body>
