@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f7f3ec" />
+<title>Kabhi Kabhi Shayar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f3ec;--ink:#29251f;--muted:#898176;--line:#e6ded2;--accent:#8a4c50;--card:#fbf9f5}
+*{box-sizing:border-box}html{min-height:100%;background:var(--paper)}body{margin:0;color:var(--ink);font-family:'DM Sans','Noto Serif Devanagari',sans-serif;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#fffdf9 0%,var(--paper) 58%);}
+.wrap{width:min(720px,100%);margin:0 auto;padding:34px 22px 48px}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:0 0 18px}.brand{display:flex;align-items:center;gap:11px}.mark{width:34px;height:34px;border:1px solid #cbb5a9;border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:Georgia,serif;font-size:22px}.brandname{font-family:'Playfair Display',serif;font-size:19px;letter-spacing:-.3px}.edition{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}.intro{text-align:center;padding:48px 0 26px}.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin:0 0 16px}.intro h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,7vw,48px);line-height:1.12;letter-spacing:-1.5px;margin:0}.intro p{font-size:13px;color:var(--muted);margin:13px 0 0;letter-spacing:.15px}.ornament{color:#b99c88;font-size:20px;margin-top:19px;letter-spacing:8px}.poems{display:flex;flex-direction:column;gap:14px}.poem{position:relative;background:rgba(255,253,249,.72);border:1px solid var(--line);padding:27px 28px 22px;border-radius:3px;animation:rise .35s ease both}.poem:first-child{border-color:#d8c6b9}.poem:first-child:before{content:'TAZA KALAAM';position:absolute;top:-7px;left:18px;background:var(--paper);padding:0 8px;font-size:9px;letter-spacing:2px;color:var(--accent)}.verse{font-family:'Noto Serif Devanagari',serif;font-size:clamp(17px,4vw,21px);line-height:1.95;white-space:pre-line;margin:0;text-align:center}.byline{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;color:var(--muted);font-size:12px}.byline:before,.byline:after{content:'';width:20px;height:1px;background:#d9c9bc}.poem-tools{display:flex;justify-content:flex-end;margin-top:12px}.tiny{border:0;background:transparent;color:#a39a8e;font:11px 'DM Sans',sans-serif;padding:4px 6px;cursor:pointer}.tiny:hover{color:var(--accent)}.add-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin:24px auto 0;padding:11px 16px;border:1px solid #d8c8bb;background:transparent;color:var(--accent);border-radius:2px;font:12px 'DM Sans',sans-serif;letter-spacing:.3px;cursor:pointer}.add-toggle:hover{background:#f0e8df}.formbox{display:none;margin:16px auto 0;background:#fbf8f2;border:1px solid var(--line);padding:20px;max-width:520px}.formbox.open{display:block}.formbox label{display:block;font-size:11px;letter-spacing:.7px;color:var(--muted);margin:0 0 7px}.formbox textarea,.formbox input{width:100%;border:1px solid #ded4c8;background:#fffdf9;border-radius:2px;padding:12px;color:var(--ink);font:14px 'Noto Serif Devanagari',serif;outline:none;margin-bottom:14px}.formbox textarea{min-height:115px;resize:vertical;line-height:1.7}.formbox input{font-family:'DM Sans',sans-serif}.formbox textarea:focus,.formbox input:focus{border-color:#b48d85}.save{background:var(--accent);border:1px solid var(--accent);color:#fffaf5;padding:11px 16px;font:12px 'DM Sans',sans-serif;cursor:pointer}.cancel{background:transparent;border:0;color:var(--muted);padding:11px 13px;font:12px 'DM Sans',sans-serif;cursor:pointer}.foot{text-align:center;padding-top:35px;color:#a39a8e;font-size:10px;letter-spacing:1.5px}.foot span{color:var(--accent)}.notice{text-align:center;color:var(--muted);font-size:11px;margin-top:10px;line-height:1.6}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.wrap{padding:22px 15px 34px}.intro{padding:40px 0 24px}.poem{padding:24px 17px 20px}.top{padding-bottom:14px}.edition{letter-spacing:1px;font-size:9px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="brand"><div class="mark">؏</div><div class="brandname">Kabhi Kabhi Shayar</div></div>
+    <div class="edition">Ek chhoti si mehfil</div>
+  </header>
+  <div class="intro">
+    <p class="eyebrow">Alfaaz · Ehsaas · Sukoon</p>
+    <h1>Kabhi kabhi,<br>kuch kehna hota hai.</h1>
+    <p>Bas shayari. Aur uske peeche ka naam.</p>
+    <div class="ornament">— ✳ —</div>
+  </div>
+  <div id="poems" class="poems" aria-live="polite"></div>
+  <button class="add-toggle" id="toggleForm" type="button"><span>＋</span> Mehfil mein shayari jodein</button>
+  <form class="formbox" id="poemForm">
+    <label for="verse">SHAYARI</label>
+    <textarea id="verse" placeholder="Apne alfaaz yahan likhein…" required></textarea>
+    <label for="poet">SHAAYAR KA NAAM</label>
+    <input id="poet" placeholder="Naam ya takhallus" maxlength="80" required />
+    <button class="save" type="submit">Shayari jodein ↑</button><button class="cancel" id="cancelForm" type="button">Rehne dein</button>
+    <div class="notice">Nayi shayari hamesha sabse upar dikhegi. Is demo mein entries isi browser par save hoti hain.</div>
+  </form>
+  <footer class="foot">KABHI KABHI SHAYAR <span>·</span> DIL SE, DHEERE SE</footer>
+</main>
+<script>
+const starter = [
+ {id:'starter-1',verse:'Kabhi khud se bhi mil liya karo,\nhar mulaqat kisi aur se zaroori nahi.',poet:'Kabhi Kabhi Shayar'}
+];
+const STORE='kks_poems_v1';
+let poems;
+try { const saved=JSON.parse(localStorage.getItem(STORE)); poems=Array.isArray(saved)?saved:starter; } catch(e){ poems=starter; }
+const list=document.getElementById('poems');
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function render(){list.innerHTML='';poems.forEach((p,i)=>{const card=document.createElement('article');card.className='poem';card.innerHTML=`<p class="verse">${esc(p.verse)}</p><div class="byline">${esc(p.poet)}</div>${p.id!=='starter-1'?'<div class="poem-tools"><button class="tiny" type="button" aria-label="Delete poem">hataayein ×</button></div>':''}`;const del=card.querySelector('button');if(del)del.addEventListener('click',()=>{if(confirm('Is shayari ko hata dein?')){poems=poems.filter(x=>x.id!==p.id);persist();render();}});list.appendChild(card);});}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(poems));}catch(e){alert('Browser storage available nahi hai. Is page ko normal browser mein khol kar dekhein.');}}
+const form=document.getElementById('poemForm');document.getElementById('toggleForm').addEventListener('click',()=>{form.classList.toggle('open');if(form.classList.contains('open'))document.getElementById('verse').focus();});document.getElementById('cancelForm').addEventListener('click',()=>form.classList.remove('open'));
+form.addEventListener('submit',e=>{e.preventDefault();const verse=document.getElementById('verse').value.trim();const poet=document.getElementById('poet').value.trim();if(!verse||!poet)return;poems.unshift({id:Date.now().toString(),verse,poet});persist();render();form.reset();form.classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});});
+render();
+</script>
+</body>
+</html>
