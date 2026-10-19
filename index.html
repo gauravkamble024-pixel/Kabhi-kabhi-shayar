@@ -1,117 +1,142 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#f7f3ec" />
-<title>Kabhi Kabhi Shayar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--paper:#f7f3ec;--ink:#29251f;--muted:#898176;--line:#e6ded2;--accent:#8a4c50;--card:#fbf9f5}
-*{box-sizing:border-box}html{min-height:100%;background:var(--paper)}body{margin:0;color:var(--ink);font-family:'DM Sans','Noto Serif Devanagari',sans-serif;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#fffdf9 0%,var(--paper) 58%);}
-.wrap{width:min(720px,100%);margin:0 auto;padding:34px 22px 48px}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:0 0 18px}.brand{display:flex;align-items:center;gap:11px}.mark{width:34px;height:34px;border:1px solid #cbb5a9;border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:Georgia,serif;font-size:22px}.brandname{font-family:'Playfair Display',serif;font-size:19px;letter-spacing:-.3px}.edition{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}.intro{text-align:center;padding:48px 0 26px}.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin:0 0 16px}.intro h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,7vw,48px);line-height:1.12;letter-spacing:-1.5px;margin:0}.intro p{font-size:13px;color:var(--muted);margin:13px 0 0;letter-spacing:.15px}.ornament{color:#b99c88;font-size:20px;margin-top:19px;letter-spacing:8px}.poems{display:flex;flex-direction:column;gap:14px}.poem{position:relative;background:rgba(255,253,249,.72);border:1px solid var(--line);padding:27px 28px 22px;border-radius:3px;animation:rise .35s ease both}.poem:first-child{border-color:#d8c6b9}.poem:first-child:before{content:'TAZA KALAAM';position:absolute;top:-7px;left:18px;background:var(--paper);padding:0 8px;font-size:9px;letter-spacing:2px;color:var(--accent)}.verse{font-family:'Noto Serif Devanagari',serif;font-size:clamp(17px,4vw,21px);line-height:1.95;white-space:pre-line;margin:0;text-align:center}.byline{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;color:var(--muted);font-size:12px}.byline:before,.byline:after{content:'';width:20px;height:1px;background:#d9c9bc}.poem-tools{display:flex;justify-content:flex-end;margin-top:12px}.tiny{border:0;background:transparent;color:#a39a8e;font:11px 'DM Sans',sans-serif;padding:4px 6px;cursor:pointer}.tiny:hover{color:var(--accent)}.add-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin:24px auto 0;padding:11px 16px;border:1px solid #d8c8bb;background:transparent;color:var(--accent);border-radius:2px;font:12px 'DM Sans',sans-serif;letter-spacing:.3px;cursor:pointer}.add-toggle:hover{background:#f0e8df}.formbox{display:none;margin:16px auto 0;background:#fbf8f2;border:1px solid var(--line);padding:20px;max-width:520px}.formbox.open{display:block}.formbox label{display:block;font-size:11px;letter-spacing:.7px;color:var(--muted);margin:0 0 7px}.formbox textarea,.formbox input{width:100%;border:1px solid #ded4c8;background:#fffdf9;border-radius:2px;padding:12px;color:var(--ink);font:14px 'Noto Serif Devanagari',serif;outline:none;margin-bottom:14px}.formbox textarea{min-height:115px;resize:vertical;line-height:1.7}.formbox input{font-family:'DM Sans',sans-serif}.formbox textarea:focus,.formbox input:focus{border-color:#b48d85}.save{background:var(--accent);border:1px solid var(--accent);color:#fffaf5;padding:11px 16px;font:12px 'DM Sans',sans-serif;cursor:pointer}.cancel{background:transparent;border:0;color:var(--muted);padding:11px 13px;font:12px 'DM Sans',sans-serif;cursor:pointer}.foot{text-align:center;padding-top:35px;color:#a39a8e;font-size:10px;letter-spacing:1.5px}.foot span{color:var(--accent)}.notice{text-align:center;color:var(--muted);font-size:11px;margin-top:10px;line-height:1.6}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:480px){.wrap{padding:22px 15px 34px}.intro{padding:40px 0 24px}.poem{padding:24px 17px 20px}.top{padding-bottom:14px}.edition{letter-spacing:1px;font-size:9px}}
-</style>
-</head>
-  <meta name="google-site-verification"content="jylxPO4bm7SmWJvwjkSg4zKHk-q5E3pOW_4QP4F1k"/>
-<body>
-<main class="wrap">
-  <header class="top">
-    <div class="brand"><div class="mark">؏</div><div class="brandname">Kabhi Kabhi Shayar</div></div>
-    <div class="edition">Ek chhoti si mehfil</div>
-  </header>
-  <div class="intro">
-    <p class="eyebrow">Alfaaz · Ehsaas · Sukoon</p>
-    <h1>Kabhi kabhi,<br>kuch kehna hota hai.</h1>
-    <p>Bas shayari. Aur uske peeche ka naam.</p>
-    <div class="ornament">— ✳ —</div>
-  </div>
-  <div id="poems" class="poems" aria-live="polite"></div>
-  <button class="add-toggle" id="toggleForm" type="button"><span>＋</span> Mehfil mein shayari jodein</button>
-  <form class="formbox" id="poemForm">
-    <label for="verse">SHAYARI</label>
-    <textarea id="verse" placeholder="Apne alfaaz yahan likhein…" required></textarea>
-    <label for="poet">SHAAYAR KA NAAM</label>
-    <input id="poet" placeholder="Naam ya takhallus" maxlength="80" required />
-    <button class="save" type="submit">Shayari jodein ↑</button><button class="cancel" id="cancelForm" type="button">Rehne dein</button>
-    <div class="notice">Nayi shayari hamesha sabse upar dikhegi. Is demo mein entries isi browser par save hoti hain.</div>
-  </form>
-  <footer class="foot">KABHI KABHI SHAYAR <span>·</span> DIL SE, DHEERE SE</footer>
-</main>
-<script>
-  // YOUR JSONBIN CREDENTIALS
-  const BIN_ID = "6ad660b2ffd5d1605379ad5a";
-  const API_KEY = "$2a$10$pqTJrKg0aRYW6PbU33yBGOQN28o/lDMLHOld6C5qJzc92xSJqlR3.";
-  
-  const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-
-  // 1. Fetch and display shayaris when the page loads
-  async function loadShayaris() {
-    try {
-      const response = await fetch(API_URL, {
-        headers: {
-          'X-Master-Key': API_KEY
-        }
-      });
-      const data = await response.json();
-      const shayaris = data.record.shayaris || [];
-      
-      const poemsContainer = document.getElementById('poems');
-      poemsContainer.innerHTML = '';
-      
-      shayaris.reverse().forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'poem';
-        div.innerHTML = `<p>${item.verse}</p><span>— ${item.poet}</span>`;
-        poemsContainer.appendChild(div);
-      });
-    } catch (error) {
-      console.error("Error loading shayaris:", error);
-    }
-  }
-
-  // 2. Handle form submission to save new shayari permanently
-  document.getElementById('poemForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f3ec" />
+  <title>Kabhi Kabhi Shayar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f7f3ec;--ink:#29251f;--muted:#898279;--border:#e3dccd;--card:#fffcf7}
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--paper)}
+    body{font-family:'Poppins',sans-serif;color:var(--ink);margin:0;padding:0;display:flex;justify-content:center}
+    .wrap{width:min(720px,100%);margin:0 auto;padding:40px 20px 60px}
+    .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;border-bottom:1px solid var(--border);padding-bottom:16px}
+    .brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;letter-spacing:0.5px}
+    .edition{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+    .intro{text-align:center;padding:20px 0 36px}
+    .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;margin:0 0 12px;line-height:1.2}
+    .intro p{font-size:15px;color:var(--muted);margin:0;font-style:italic}
+    .ornament{text-align:center;color:var(--border);margin:24px 0;font-size:18px}
     
-    const verse = document.getElementById('verse').value;
-    const poet = document.getElementById('poet').value;
+    .poems{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
+    .poem{background:var(--card);border:1px solid var(--border);padding:28px 24px;border-radius:4px;box-shadow:0 2px 8px rgba(41,37,31,0.02)}
+    .poem p{font-family:'Playfair Display',serif;font-size:18px;line-height:1.6;margin:0 0 16px;white-space:pre-wrap}
+    .poem span{font-size:13px;color:var(--muted);letter-spacing:0.5px}
 
-    try {
-      // First, get current list
-      const getRes = await fetch(API_URL, {
-        headers: { 'X-Master-Key': API_KEY }
-      });
-      const getData = await getRes.json();
-      const currentList = getData.record.shayaris || [];
+    .formbox{background:var(--card);border:1px solid var(--border);padding:24px;border-radius:4px;margin-top:20px}
+    .formbox label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .formbox textarea, .formbox input{width:100%;font-family:'Poppins',sans-serif;font-size:14px;padding:12px;border:1px solid var(--border);background:var(--paper);color:var(--ink);border-radius:2px;margin-bottom:16px;resize:vertical}
+    .formbox textarea{height:100px}
+    .formbox button{background:var(--ink);color:var(--paper);border:none;padding:12px 24px;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:2px;width:100%}
+    .formbox button:hover{opacity:0.9}
 
-      // Add new shayari to the list
-      currentList.push({ verse, poet });
+    .foot{text-align:center;font-size:11px;color:var(--muted);margin-top:40px;border-top:1px solid var(--border);padding-top:20px;letter-spacing:1px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">Kabhi Kabhi Shayar</div>
+      <div class="edition">Mehfil</div>
+    </header>
 
-      // Save updated list back to JSONBin
-      const updateRes = await fetch(API_URL, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Master-Key': API_KEY
-        },
-        body: JSON.stringify({ shayaris: currentList })
-      });
+    <div class="intro">
+      <p class="eyebrow">Alfaaz · Ehsaas · Sukoon</p>
+      <h1>Kabhi kabhi,<br>kuch kehna hota hai.</h1>
+      <p>Bas shayari. Aur uske peeche ka naam.</p>
+      <div class="ornament">— ❊ —</div>
+    </div>
 
-      if (updateRes.ok) {
-        document.getElementById('poemForm').reset();
-        loadShayaris(); // Reload the list instantly
-        alert('Shayari posted successfully for everyone to see!');
-      } else {
-        alert('Failed to post. Check your API key.');
+    <!-- Container where shayaris will load -->
+    <div id="poems" class="poems"></div>
+
+    <!-- Submission Form Box -->
+    <form class="formbox" id="poemForm">
+      <label for="verse">Shayari</label>
+      <textarea id="verse" required placeholder="Apne dil ki baat yahan likhiye..."></textarea>
+      
+      <label for="poet">Aapka Naam (Poet)</label>
+      <input type="text" id="poet" required placeholder="Aapka naam ya pen name..." />
+      
+      <button type="submit">Post Shayari</button>
+    </form>
+
+    <footer class="foot">KABHI KABHI SHAYAR</footer>
+  </main>
+
+  <script>
+    // YOUR JSONBIN CREDENTIALS
+    const BIN_ID = "6ad660b2ffd5d1605379ad5a";
+    const API_KEY = "$2a$10$pqTJrkG0arYW6PBu33yBG0F5d05R2q.5H024X2zF3vj9Y1Lg7j89K"; 
+    
+    const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+    // 1. Fetch and display shayaris when the page loads
+    async function loadShayaris() {
+      try {
+        const response = await fetch(API_URL, {
+          headers: { 'X-Master-Key': API_KEY }
+        });
+        const data = await response.json();
+        const shayaris = data.record.shayaris || [];
+        
+        const poemsContainer = document.getElementById('poems');
+        poemsContainer.innerHTML = '';
+        
+        shayaris.reverse().forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'poem';
+          div.innerHTML = `<p>${item.verse}</p><span>— ${item.poet}</span>`;
+          poemsContainer.appendChild(div);
+        });
+      } catch (error) {
+        console.error("Error loading shayaris:", error);
       }
-    } catch (error) {
-      console.error("Error saving shayari:", error);
     }
-  });
 
-  // Load shayaris on page start
-  loadShayaris();
-</script>
+    // 2. Handle form submission to save new shayari permanently
+    document.getElementById('poemForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const verse = document.getElementById('verse').value;
+      const poet = document.getElementById('poet').value;
+
+      try {
+        const getRes = await fetch(API_URL, {
+          headers: { 'X-Master-Key': API_KEY }
+        });
+        const getData = await getRes.json();
+        const currentList = getData.record.shayaris || [];
+
+        currentList.push({ verse, poet });
+
+        const updateRes = await fetch(API_URL, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': API_KEY
+          },
+          body: JSON.stringify({ shayaris: currentList })
+        });
+
+        if (updateRes.ok) {
+          document.getElementById('poemForm').reset();
+          loadShayaris();
+          alert('Shayari posted successfully for everyone to see!');
+        } else {
+          alert('Failed to post. Check your API key.');
+        }
+      } catch (error) {
+        console.error("Error saving shayari:", error);
+      }
+    });
+
+    loadShayaris();
+  </script>
+</body>
+</html>
