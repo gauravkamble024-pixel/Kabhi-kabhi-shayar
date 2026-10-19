@@ -41,19 +41,77 @@
   <footer class="foot">KABHI KABHI SHAYAR <span>·</span> DIL SE, DHEERE SE</footer>
 </main>
 <script>
-const starter = [
- {id:'starter-1',verse:'Kabhi khud se bhi mil liya karo,\nhar mulaqat kisi aur se zaroori nahi.',poet:'Kabhi Kabhi Shayar'}
-];
-const STORE='kks_poems_v1';
-let poems;
-try { const saved=JSON.parse(localStorage.getItem(STORE)); poems=Array.isArray(saved)?saved:starter; } catch(e){ poems=starter; }
-const list=document.getElementById('poems');
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function render(){list.innerHTML='';poems.forEach((p,i)=>{const card=document.createElement('article');card.className='poem';card.innerHTML=`<p class="verse">${esc(p.verse)}</p><div class="byline">${esc(p.poet)}</div>${p.id!=='starter-1'?'<div class="poem-tools"><button class="tiny" type="button" aria-label="Delete poem">hataayein ×</button></div>':''}`;const del=card.querySelector('button');if(del)del.addEventListener('click',()=>{if(confirm('Is shayari ko hata dein?')){poems=poems.filter(x=>x.id!==p.id);persist();render();}});list.appendChild(card);});}
-function persist(){try{localStorage.setItem(STORE,JSON.stringify(poems));}catch(e){alert('Browser storage available nahi hai. Is page ko normal browser mein khol kar dekhein.');}}
-const form=document.getElementById('poemForm');document.getElementById('toggleForm').addEventListener('click',()=>{form.classList.toggle('open');if(form.classList.contains('open'))document.getElementById('verse').focus();});document.getElementById('cancelForm').addEventListener('click',()=>form.classList.remove('open'));
-form.addEventListener('submit',e=>{e.preventDefault();const verse=document.getElementById('verse').value.trim();const poet=document.getElementById('poet').value.trim();if(!verse||!poet)return;poems.unshift({id:Date.now().toString(),verse,poet});persist();render();form.reset();form.classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});});
-render();
+  // YOUR JSONBIN CREDENTIALS
+  const BIN_ID = "6ad660b2ffd5d1605379ad5a";
+  const API_KEY = "$2a$10$pqTJrKg0aRYW6PbU33yBGOQN28o/lDMLHOld6C5qJzc92xSJqlR3.";
+  
+  const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+  // 1. Fetch and display shayaris when the page loads
+  async function loadShayaris() {
+    try {
+      const response = await fetch(API_URL, {
+        headers: {
+          'X-Master-Key': API_KEY
+        }
+      });
+      const data = await response.json();
+      const shayaris = data.record.shayaris || [];
+      
+      const poemsContainer = document.getElementById('poems');
+      poemsContainer.innerHTML = '';
+      
+      shayaris.reverse().forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'poem';
+        div.innerHTML = `<p>${item.verse}</p><span>— ${item.poet}</span>`;
+        poemsContainer.appendChild(div);
+      });
+    } catch (error) {
+      console.error("Error loading shayaris:", error);
+    }
+  }
+
+  // 2. Handle form submission to save new shayari permanently
+  document.getElementById('poemForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const verse = document.getElementById('verse').value;
+    const poet = document.getElementById('poet').value;
+
+    try {
+      // First, get current list
+      const getRes = await fetch(API_URL, {
+        headers: { 'X-Master-Key': API_KEY }
+      });
+      const getData = await getRes.json();
+      const currentList = getData.record.shayaris || [];
+
+      // Add new shayari to the list
+      currentList.push({ verse, poet });
+
+      // Save updated list back to JSONBin
+      const updateRes = await fetch(API_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': API_KEY
+        },
+        body: JSON.stringify({ shayaris: currentList })
+      });
+
+      if (updateRes.ok) {
+        document.getElementById('poemForm').reset();
+        loadShayaris(); // Reload the list instantly
+        alert('Shayari posted successfully for everyone to see!');
+      } else {
+        alert('Failed to post. Check your API key.');
+      }
+    } catch (error) {
+      console.error("Error saving shayari:", error);
+    }
+  });
+
+  // Load shayaris on page start
+  loadShayaris();
 </script>
-</body>
-</html>
