@@ -70,13 +70,11 @@
   </main>
 
   <script>
-    // YOUR JSONBIN CREDENTIALS
+      <script>
     const BIN_ID = "6ad660b2ffd5d1605379ad5a";
     const API_KEY = "$2a$10$pqTJrkG0arYW6PBu33yBG0F5d05R2q.5H024X2zF3vj9Y1Lg7j89K"; 
-    
     const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-    // 1. Fetch and display shayaris when the page loads
     async function loadShayaris() {
       try {
         const response = await fetch(API_URL, {
@@ -99,22 +97,29 @@
       }
     }
 
-    // 2. Handle form submission to save new shayari permanently
-    document.getElementById('poemForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
+    async function postShayari(event) {
+      event.preventDefault();
       
-      const verse = document.getElementById('verse').value;
-      const poet = document.getElementById('poet').value;
+      const verse = document.getElementById('verse').value.trim();
+      const poet = document.getElementById('poet').value.trim();
+
+      if (!verse || !poet) {
+        alert('Please fill in both fields!');
+        return;
+      }
 
       try {
+        // Fetch current list
         const getRes = await fetch(API_URL, {
           headers: { 'X-Master-Key': API_KEY }
         });
         const getData = await getRes.json();
         const currentList = getData.record.shayaris || [];
 
+        // Push new entry
         currentList.push({ verse, poet });
 
+        // Update JSONBin
         const updateRes = await fetch(API_URL, {
           method: 'PUT',
           headers: {
@@ -125,13 +130,25 @@
         });
 
         if (updateRes.ok) {
-          document.getElementById('poemForm').reset();
+          document.getElementById('verse').value = '';
+          document.getElementById('poet').value = '';
           loadShayaris();
-          alert('Shayari posted successfully for everyone to see!');
+          alert('Shayari posted successfully!');
         } else {
-          alert('Failed to post. Check your API key.');
+          alert('Failed to update database. Check API key.');
         }
       } catch (error) {
+        console.error("Error saving shayari:", error);
+        alert('An error occurred. Check internet connection.');
+      }
+    }
+
+    // Attach event listener safely
+    document.getElementById('poemForm').addEventListener('submit', postShayari);
+
+    // Load shayaris on page start
+    loadShayaris();
+  </script>
         console.error("Error saving shayari:", error);
       }
     });
