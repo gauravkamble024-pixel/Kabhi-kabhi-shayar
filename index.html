@@ -64,16 +64,8 @@
 
   <script>
     const BIN_ID = "6ad660b2ffd5d1605379ad5a";
-    const API_KEY = "$2a$10$pqTJrkG0arYW6PBu33yBG0F5d05R2q.5H024X2zF3vj9Y1Lg7j89K"; 
+    const API_KEY = "$2a$10$pqTJrKg0aRYW6PbU33yBGOQN28o/lDMLHOld6C5qJzc92xSJqlR3"; 
     const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-
-    // Auto-fill name if saved in browser storage
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedName = localStorage.getItem('kks_poet_name');
-      if (savedName) {
-        document.getElementById('poet').value = savedName;
-      }
-    });
 
     async function loadShayaris() {
       try {
@@ -97,8 +89,8 @@
       }
     }
 
-    document.getElementById('poemForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
+    async function postShayari(event) {
+      event.preventDefault();
       
       const verse = document.getElementById('verse').value.trim();
       const poet = document.getElementById('poet').value.trim();
@@ -107,9 +99,6 @@
         alert('Please fill in both fields!');
         return;
       }
-
-      // Save name for next time
-      localStorage.setItem('kks_poet_name', poet);
 
       try {
         const getRes = await fetch(API_URL, {
@@ -131,6 +120,7 @@
 
         if (updateRes.ok) {
           document.getElementById('verse').value = '';
+          document.getElementById('poet').value = '';
           loadShayaris();
           alert('Shayari posted successfully!');
         } else {
@@ -139,8 +129,9 @@
       } catch (error) {
         console.error("Error saving shayari:", error);
       }
-    });
+    }
 
+    document.getElementById('poemForm').addEventListener('submit', postShayari);
     loadShayaris();
   </script>
 </body>
